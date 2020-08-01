@@ -1,0 +1,25 @@
+$mainColor: #2FCB9E;
+$font-stack: 'Courier New', Courier, monospace;
+
+.app{
+    font: $font-stack;
+    font-size: large;
+}
+
+.nav-bar-app{
+    font-size: larger;
+    font: 100% $font-stack;
+    background-color: $mainColor;
+}
+
+#brand{
+    font: $font-stack;
+    font-size: larger;
+    font-weight: 600;
+
+}
+
+.logo{
+    position: relative;
+    
+}

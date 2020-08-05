@@ -6,4 +6,16 @@
 #title-nav{
     font-family: 'Courier New', Courier, monospace;
     font-size: xx-large;
+    font-weight: bold;
+}
+
+#icon{
+    padding-left: 10px;
+}
+
+.default-dropdown{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
+    padding: 5px;
+
 }

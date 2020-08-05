@@ -16,11 +16,11 @@ import 'mdbreact/dist/css/mdb.css';
 
 import './ui/css/App.css';
 // import './ui/SCSS/App.scss';
-import Home from "./ui/Home";
-import About from "./ui/About";
-import Calendar from "./ui/Calendar";
-import Feature from "./ui/Features";
-import NotFound from "./ui/NotFound";
+import Home from "./ui/Components/Home";
+import About from "./ui/Components/About";
+import Calendar from "./ui/Components/Calendar";
+import Feature from "./ui/Components/Features";
+import NotFound from "./ui/Components/NotFound";
 
 
 class App extends Component {
@@ -41,10 +41,10 @@ class App extends Component {
                             <h3 id="title-nav">SHAW</h3>
                         </MDBNavbarBrand>
                         <MDBNavbarToggler onClick={this.toggleCollapse} />
-                        <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
+                        <MDBCollapse id="navbarCollapse1" isOpen={this.state.isOpen} navbar>
                             <MDBNavbarNav left>
                                 <MDBNavItem>
-                                    <MDBNavLink to="/about">About Me</MDBNavLink>
+                                    <MDBNavLink to="/about">About</MDBNavLink>
                                 </MDBNavItem>
                                 <MDBNavItem>
                                     <MDBNavLink to="/calendar">Calendar</MDBNavLink>
@@ -66,11 +66,11 @@ class App extends Component {
                                 </MDBDropdown>
                             </MDBNavItem> */}
                             </MDBNavbarNav>
-                            <MDBNavbarNav right>
+                            {/* <MDBNavbarNav right>
                                 <MDBNavItem>
                                     <MDBDropdown>
                                         <MDBDropdownToggle nav caret>
-                                            <MDBIcon icon="user" />
+                                            <MDBIcon id="icon" icon="user" />
                                         </MDBDropdownToggle>
                                         <MDBDropdownMenu className="dropdown-default">
                                             <MDBDropdownItem href="#!">Login</MDBDropdownItem>
@@ -80,7 +80,7 @@ class App extends Component {
                                         </MDBDropdownMenu>
                                     </MDBDropdown>
                                 </MDBNavItem>
-                            </MDBNavbarNav>
+                            </MDBNavbarNav> */}
                         </MDBCollapse>
                     </MDBNavbar>
                     <Switch>
@@ -96,39 +96,4 @@ class App extends Component {
     }
 }
 
-
-//Below is the previous navbar before switching to MDB react
-
-/*
-class App extends Component {
-    render(){
-        return(
-            <div className="app">
-                <BrowserRouter>
-                    <div className="nav-bar-app">
-                        <Navbar id="nav-bar-app" bg="dark" variant="dark">
-                            <Navbar.Brand id="brand" href="/" >
-                                <Logo alt="" width="25px" height="25px" className="logo" />
-                                SHAW
-                            </Navbar.Brand>
-                            <Nav className="mr-auto">
-                                <Nav.Link href="/about">About</Nav.Link>
-                                <Nav.Link href="/calendar">Calendar</Nav.Link>
-                                <Nav.Link href="/feature">Features</Nav.Link>
-                            </Nav>
-                        </Navbar>
-                    </div>
-                    <Switch>
-                        <Route exact path="/" component={Home} />
-                        <Route path="/about" component={About} />
-                        <Route path="/calendar" component={Calendar} />
-                        <Route path="/feature" component={Feature} />
-                        <Route component={NotFound} />
-                    </Switch>
-                </BrowserRouter>
-            </div>
-        );
-    }
-}
-*/
 export default App;

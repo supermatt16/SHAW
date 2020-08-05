@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar, Nav } from 'react-bootstrap';
-import { ReactComponent as Logo } from "./ui/images/iconmonstr-medical-6.svg";
-import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBContainer, MDBIcon, MDBHamburgerToggler } from 'mdbreact';
+// import { Navbar, Nav } from 'react-bootstrap';
+// import { ReactComponent as Logo } from "./ui/images/iconmonstr-medical-6.svg";
 
-// import './ui/CSS/App.css';
-import './ui/SCSS/App.scss';
+import {
+    MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdown,
+    MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon
+} from "mdbreact";
+
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import 'bootstrap-css-only/css/bootstrap.min.css';
+import 'mdbreact/dist/css/mdb.css';
+
+import './ui/css/App.css';
+// import './ui/SCSS/App.scss';
 import Home from "./ui/Home";
 import About from "./ui/About";
 import Calendar from "./ui/Calendar";
@@ -17,51 +25,64 @@ import NotFound from "./ui/NotFound";
 
 class App extends Component {
     state = {
-        collapse1: false,
-        collapseID: ''
+        isOpen: false
+    };
+
+    toggleCollapse = () => {
+        this.setState({ isOpen: !this.state.isOpen });
     }
 
-    toggleCollapse = collapseID => () => {
-        this.setState(prevState => ({ collapseID: ( prevState.collapseID !== collapseID ? collapseID:'' ) }));
-    }
-
-    toggleSingleCollapse = collapseId => {
-        this.setState ({
-            ...this.state,
-            [collapseId]: !this.state[collapseId]
-        });
-    }
-
-    render(){
-        return(
+    render() {
+        return (
             <div className="app">
-                <BrowserRouter>
-                    <MDBContainer id="nav-bar">
-                        <div id="bar-nav">
-                            <MDBNavbar color="#00796b teal darken-2" style={{marginTop: '20px'}} dark>
-                                <MDBNavbarBrand id="brand" href="/">
-                                    SHAW
-                                </MDBNavbarBrand>
-                                <MDBHamburgerToggler color="#e64a19 deep-orange darken-2" id="hamburger1" onClick={()=> this.toggleSingleCollapse('collapse1')} />
-                                <MDBCollapse isOpen={this.state.collapse1} navbar>
-                                    <MDBNavbarNav left>
-                                        <MDBNavItem active>
-                                            <MDBNavLink to="/">Home</MDBNavLink>
-                                        </MDBNavItem>
-                                        <MDBNavItem active>
-                                            <MDBNavLink to="/about">About</MDBNavLink>
-                                        </MDBNavItem>
-                                        <MDBNavItem active>
-                                            <MDBNavLink to="/calendar">Calendar</MDBNavLink>
-                                        </MDBNavItem>
-                                        <MDBNavItem active>
-                                            <MDBNavLink to="/feature">Feature</MDBNavLink>
-                                        </MDBNavItem>
-                                    </MDBNavbarNav>
-                                </MDBCollapse>
-                            </MDBNavbar>
-                        </div>
-                    </MDBContainer>
+                <Router>
+                    <MDBNavbar color="#00695c teal darken-3" dark expand="md">
+                        <MDBNavbarBrand id="brand" href="/">
+                            <h3 id="title-nav">SHAW</h3>
+                        </MDBNavbarBrand>
+                        <MDBNavbarToggler onClick={this.toggleCollapse} />
+                        <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
+                            <MDBNavbarNav left>
+                                <MDBNavItem>
+                                    <MDBNavLink to="/about">About Me</MDBNavLink>
+                                </MDBNavItem>
+                                <MDBNavItem>
+                                    <MDBNavLink to="/calendar">Calendar</MDBNavLink>
+                                </MDBNavItem>
+                                <MDBNavItem>
+                                    <MDBNavLink to="/feature">Feature</MDBNavLink>
+                                </MDBNavItem>
+                                {/* <MDBNavItem>
+                                <MDBDropdown>
+                                    <MDBDropdownToggle nav caret>
+                                        <div className="d-none d-md-inline">Dropdown</div>
+                                    </MDBDropdownToggle>
+                                    <MDBDropdownMenu className="dropdown-default">
+                                        <MDBDropdownItem href="#!">Action</MDBDropdownItem>
+                                        <MDBDropdownItem href="#!">Another Action</MDBDropdownItem>
+                                        <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
+                                        <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
+                                    </MDBDropdownMenu>
+                                </MDBDropdown>
+                            </MDBNavItem> */}
+                            </MDBNavbarNav>
+                            <MDBNavbarNav right>
+                                <MDBNavItem>
+                                    <MDBDropdown>
+                                        <MDBDropdownToggle nav caret>
+                                            <MDBIcon icon="user" />
+                                        </MDBDropdownToggle>
+                                        <MDBDropdownMenu className="dropdown-default">
+                                            <MDBDropdownItem href="#!">Login</MDBDropdownItem>
+                                            <MDBDropdownItem href="#!">Another Action</MDBDropdownItem>
+                                            <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
+                                            <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
+                                        </MDBDropdownMenu>
+                                    </MDBDropdown>
+                                </MDBNavItem>
+                            </MDBNavbarNav>
+                        </MDBCollapse>
+                    </MDBNavbar>
                     <Switch>
                         <Route exact path="/" component={Home} />
                         <Route path="/about" component={About} />
@@ -69,7 +90,7 @@ class App extends Component {
                         <Route path="/feature" component={Feature} />
                         <Route component={NotFound} />
                     </Switch>
-                </BrowserRouter>
+                </Router>
             </div>
         );
     }

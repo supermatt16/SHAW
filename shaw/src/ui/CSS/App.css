@@ -3,6 +3,19 @@
     font-size: medium;
 }
 
+#brand{
+    color: beige;
+}
+
+#nav-name{
+    color: #f5f5db;
+}
+
+#hamburger{
+    color: beige;
+    padding: 10px;
+}
+
 #title-nav{
     font-family: 'Courier New', Courier, monospace;
     font-size: xx-large;

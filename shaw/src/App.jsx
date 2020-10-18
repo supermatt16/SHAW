@@ -36,21 +36,21 @@ class App extends Component {
         return (
             <div className="app">
                 <Router>
-                    <MDBNavbar color="#00695c teal darken-3" dark expand="md">
+                    <MDBNavbar id="nav-bar" color="#00bfa5 teal accent-4" dark expand="lg">
                         <MDBNavbarBrand id="brand" href="/">
                             <h3 id="title-nav">SHAW</h3>
                         </MDBNavbarBrand>
-                        <MDBNavbarToggler onClick={this.toggleCollapse} />
+                        <MDBNavbarToggler id="hamburger" onClick={this.toggleCollapse} />
                         <MDBCollapse id="navbarCollapse1" isOpen={this.state.isOpen} navbar>
                             <MDBNavbarNav left>
                                 <MDBNavItem>
-                                    <MDBNavLink to="/about">About</MDBNavLink>
+                                    <MDBNavLink to="/about" id="nav-name" >About</MDBNavLink>
                                 </MDBNavItem>
                                 <MDBNavItem>
-                                    <MDBNavLink to="/calendar">Calendar</MDBNavLink>
+                                    <MDBNavLink to="/calendar" id="nav-name" >Calendar</MDBNavLink>
                                 </MDBNavItem>
                                 <MDBNavItem>
-                                    <MDBNavLink to="/feature">Feature</MDBNavLink>
+                                    <MDBNavLink to="/feature" id="nav-name" >Feature</MDBNavLink>
                                 </MDBNavItem>
                                 {/* <MDBNavItem>
                                 <MDBDropdown>

@@ -4,7 +4,7 @@ class Calendar extends Component {
     render(){
         return(
             <div className="calendar">
-                Today is July 31, 2020
+                Today is December 22, 2020
             </div>
         );
     }
